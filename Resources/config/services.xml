@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+
+    <parameters>
+        <parameter key="manticora_location.import_province.class">Manticora\LocationBundle\Service\ImportProvince</parameter>
+        <parameter key="manticora_location.import_base.class">Manticora\LocationBundle\Service\ImportBase</parameter>
+        <parameter key="manticora_location.import_comuni.class">Manticora\LocationBundle\Service\ImportComuni</parameter>
+
+    </parameters>
+
+    <services>
+        <service id="manticora_location.import_comuni" class="%manticora_location.import_comuni.class%">
+            <argument type="service" id="kernel" />
+            <argument type="service" id="doctrine" />
+        </service>
+        <service id="manticora_location.import_province" class="%manticora_location.import_province.class%">
+            <argument type="service" id="kernel" />
+            <argument type="service" id="doctrine" />
+        </service>
+        <service id="manticora_location.import_base" class="%manticora_location.import_base.class%">
+            <argument type="service" id="kernel" />
+            <argument type="service" id="doctrine" />
+        </service>
+
+    </services>
+
+</container>

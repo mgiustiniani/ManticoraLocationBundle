@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<orm-designer version="2.3.1.855" name="LocationBundle" mvc="Symfony2" orm="Doctrine2" uuid="f7ad75e1-70ac-4fdb-99de-01d3634851ce">
+  <module name="MainModule" import-format="Doctrine2Php" import-path="../../Entity" uuid="98cbeba7-ff5f-4dd3-a397-78b4104bcdde">
+    <entity name="Zone" uuid="6dfb6f14-ebf3-4759-827f-8e8d7b0e6611">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="1372edba-61bc-40c6-87b7-f99ef7f29ebe"/>
+      <field name="name" type="string" size="255" uuid="8556b5d2-a9aa-4799-be0e-318da4b7a972"/>
+      <field name="lft" type="integer" uuid="8c198e1c-f4dc-453f-b878-a78c623feee1"/>
+      <field name="rgt" type="integer" uuid="09dfad06-028e-472f-bc43-83817e12a319"/>
+      <field name="lvl" type="integer" uuid="13b77987-735d-4de7-9870-7b0cfd308513"/>
+      <field name="root" type="integer" uuid="3e66f6b8-217d-4179-a09f-3d9218c15e46"/>
+      <field name="zone_id" type="integer" uuid="476ccff6-2011-4aac-9ea7-557f8e59e0a0"/>
+      <field name="originalId" type="string" unique="true" uuid="5274e300-94c6-4aa8-8650-4a0420a8854d"/>
+      <field name="type" type="string" uuid="a2e6412e-454d-460a-b64b-780ca4a77eb9"/>
+    </entity>
+    <association from="Zone" to="Zone" caption="Zone Zone" owner-alias="children" inverse-alias="parent" uuid="bcd67f26-7ea9-4295-83c7-845bed7ff4ca">
+      <association-field from="zone_id" to="id"/>
+      <orm-attributes>
+        <attribute name="side-inverse">
+          <attribute name="order-by">
+            <attribute name="order-by-field">
+              <attribute name="direction">ASC</attribute>
+              <attribute name="field">lft</attribute>
+            </attribute>
+          </attribute>
+        </attribute>
+      </orm-attributes>
+    </association>
+    <orm-attributes>
+      <attribute name="namespace">Manticora\LocationBundle\Entity</attribute>
+      <attribute name="file-suffix">without-suffix</attribute>
+      <attribute name="filename-format">entity-name-only</attribute>
+    </orm-attributes>
+  </module>
+  <visual-data>
+    <entity uuid="6dfb6f14-ebf3-4759-827f-8e8d7b0e6611" position-x="54" position-y="64" size-x="0" size-x2="98" size-y="0" size-y2="143"/>
+    <module uuid="98cbeba7-ff5f-4dd3-a397-78b4104bcdde" bk-color="4294114555" position-x="61" position-y="72" size-x="11" size-x2="567" size-y="22" size-y2="575"/>
+    <association uuid="bcd67f26-7ea9-4295-83c7-845bed7ff4ca" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="-20"/>
+    <project uuid="f7ad75e1-70ac-4fdb-99de-01d3634851ce" size-x="0" size-x2="858" size-y="0" size-y2="708"/>
+  </visual-data>
+</orm-designer>

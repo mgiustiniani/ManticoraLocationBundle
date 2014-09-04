@@ -1,0 +1,72 @@
+<?php
+namespace Manticora\LocationBundle\Entity;
+use Doctrine\ORM\Mapping AS ORM;
+
+use Gedmo\Mapping\Annotation as Gedmo;
+/**
+ * @Gedmo\Tree(type="nested")
+ * 
+ * @ORM\Entity
+ */
+class Zone
+{
+    /** 
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /** 
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @Gedmo\TreeLeft
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $lft;
+
+    /**
+     * @Gedmo\TreeRight
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $rgt;
+
+    /**
+     * @Gedmo\TreeLevel
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $lvl;
+
+    /**
+     * @Gedmo\TreeRoot
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $root;
+
+    /** 
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $type;
+
+    /** 
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $originalId;
+
+    /**
+     * @Gedmo\TreeParent
+     * @ORM\ManyToOne(targetEntity="Manticora\LocationBundle\Entity\Zone", inversedBy="children")
+     * @ORM\JoinColumn(name="zone_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $parent;
+
+    /** 
+     * 
+     * @ORM\OneToMany(targetEntity="Manticora\LocationBundle\Entity\Zone", mappedBy="parent")
+     * @ORM\OrderBy({"lft"="ASC"})
+     */
+    private $children;
+}
